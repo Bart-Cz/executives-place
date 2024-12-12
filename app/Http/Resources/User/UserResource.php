@@ -5,11 +5,17 @@ namespace App\Http\Resources\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @property string $uuid
+ * @property string $name
+ * @property string $email
+ * @property string $currency
+ * @property float $hourly_rate
+ * @property string $created_at
+ */
 class UserResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
-     *
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array

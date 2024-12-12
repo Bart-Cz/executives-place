@@ -16,8 +16,16 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    /**
+     * @param UserExchangeService $userExchangeService
+     */
     public function __construct(protected UserExchangeService $userExchangeService) {}
 
+    /**
+     * @param User $user
+     * @param UserShowRequest $request
+     * @return UserResource|JsonResponse
+     */
     public function show(User $user, UserShowRequest $request): UserResource|JsonResponse
     {
         $baseCurrency = $user->currency;
@@ -37,6 +45,10 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
+    /**
+     * @param UserStoreRequest $request
+     * @return UserResource
+     */
     public function store(UserStoreRequest $request): UserResource
     {
         $user = User::create([
@@ -49,6 +61,11 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
+    /**
+     * @param User $user
+     * @param UserUpdateRequest $request
+     * @return UserResource|JsonResponse
+     */
     public function update(User $user, UserUpdateRequest $request): UserResource|JsonResponse
     {
         // due to missing $user in the context of UserUpdateRequest, email validation moved here,
@@ -66,6 +83,10 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
+    /**
+     * @param User $user
+     * @return JsonResponse
+     */
     public function destroy(User $user): JsonResponse
     {
         $user->delete();

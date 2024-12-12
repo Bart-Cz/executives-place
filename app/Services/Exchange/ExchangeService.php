@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Cache;
 
 abstract class ExchangeService
 {
+    /**
+     * @param float $amount
+     * @param string $baseCurrency
+     * @param string $targetCurrency
+     * @return float
+     */
     public function convertRate(float $amount, string $baseCurrency, string $targetCurrency): float
     {
         if ($baseCurrency === $targetCurrency) {
@@ -27,5 +33,10 @@ abstract class ExchangeService
         return round($amount * $newRate, 2);
     }
 
+    /**
+     * @param string $baseCurrency
+     * @param string $targetCurrency
+     * @return float
+     */
     abstract public function getRate(string $baseCurrency, string $targetCurrency): float;
 }

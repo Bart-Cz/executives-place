@@ -4,10 +4,10 @@ namespace App\Models;
 
 use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Model
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, UuidTrait;
@@ -16,6 +16,8 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
+     *
+     * @phpstan-ignore-next-line
      */
     protected $fillable = [
         'name',
@@ -28,6 +30,8 @@ class User extends Authenticatable
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
+     *
+     * @phpstan-ignore-next-line
      */
     protected $hidden = [
     ];

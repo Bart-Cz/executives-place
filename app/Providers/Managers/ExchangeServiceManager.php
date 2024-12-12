@@ -9,6 +9,9 @@ use InvalidArgumentException;
 
 class ExchangeServiceManager
 {
+    /**
+     * @return ExchangeService
+     */
     public function resolveDriver(): ExchangeService
     {
         $driver = config('exchange.driver');
@@ -22,11 +25,17 @@ class ExchangeServiceManager
         return $this->{$driverMethod}();
     }
 
+    /**
+     * @return ExchangeService
+     */
     protected function createApiExchangeService(): ExchangeService
     {
         return new ApiExchangeService;
     }
 
+    /**
+     * @return ExchangeService
+     */
     protected function createLocalExchangeService(): ExchangeService
     {
         return new LocalExchangeService;

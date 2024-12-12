@@ -18,6 +18,12 @@ class ApiExchangeService extends ExchangeService
         $this->apiKey = config('services.exchangeratesapi.api_key');
     }
 
+    /**
+     * @param string $baseCurrency
+     * @param string $targetCurrency
+     * @return float
+     * @throws \Exception
+     */
     public function getRate(string $baseCurrency, string $targetCurrency): float
     {
         $endpoint = $this->baseUrl.'/v1/latest';
@@ -39,7 +45,14 @@ class ApiExchangeService extends ExchangeService
         throw new \Exception('Failed to fetch exchange rates from the API.');
     }
 
-    protected function request($method, $endpoint, $params = [])
+    /**
+     * @param string $method
+     * @param string $endpoint
+     * @param array<string, mixed> $params
+     * @return null|array<string, mixed>
+     * @throws \Exception
+     */
+    protected function request(string $method, string $endpoint, array $params = []): ?array
     {
         // try/catch for not exposing anything when exception thrown by api call (e.g. Guzzle issue)
         try {

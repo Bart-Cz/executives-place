@@ -12,6 +12,9 @@ enum CurrencyEnum: string
     case EUR = 'eur';
     case GBP = 'gbp';
 
+    /**
+     * @return string
+     */
     public function symbol(): string
     {
         return match ($this) {
