@@ -90,9 +90,9 @@ B. CD in to the root directory of the project and run the following command
     -w /var/www/html \
     laravelsail/php84-composer:latest \
     composer install --ignore-platform-reqs
-
-https://laravel.com/docs/11.x/sail#installing-composer-dependencies-for-existing-projects
 ```
+https://laravel.com/docs/11.x/sail#installing-composer-dependencies-for-existing-projects
+
 C. Add a .env file in the root directory
 
 D. sail up -d OR ./vendor/bin/sail up -d (without sail alias setup)
