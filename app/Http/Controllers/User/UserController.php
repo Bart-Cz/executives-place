@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\User;
+use Illuminate\Validation\Rule;
+use App\Objects\UserExchangeDto;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\User\UserResource;
+use Illuminate\Support\Facades\Validator;
+use App\Services\User\UserExchangeService;
 use App\Http\Requests\User\UserShowRequest;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
-use App\Http\Resources\User\UserResource;
-use App\Models\User;
-use App\Objects\UserExchangeDto;
-use App\Services\User\UserExchangeService;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {

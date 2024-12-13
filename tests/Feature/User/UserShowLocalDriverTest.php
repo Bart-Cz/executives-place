@@ -1,10 +1,10 @@
 <?php
 
-use App\Enums\CurrencyEnum;
 use App\Models\User;
-use App\Services\Exchange\LocalExchange\LocalExchangeService;
-use Illuminate\Support\Facades\Config;
+use App\Enums\CurrencyEnum;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
+use App\Services\Exchange\LocalExchange\LocalExchangeService;
 
 beforeEach(function () {
     Config::set('exchange.driver', 'local');

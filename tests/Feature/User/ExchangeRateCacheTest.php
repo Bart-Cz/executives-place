@@ -1,7 +1,7 @@
 <?php
 
-use App\Services\Exchange\ApiExchange\ApiExchangeService;
 use App\Services\Exchange\LocalExchange\LocalExchangeService;
+use App\Services\Exchange\ApiExchange\ApiExchangeService;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;

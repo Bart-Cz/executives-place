@@ -3,8 +3,8 @@
 namespace App\Http\Requests\User;
 
 use App\Enums\CurrencyEnum;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UserShowRequest extends FormRequest
 {

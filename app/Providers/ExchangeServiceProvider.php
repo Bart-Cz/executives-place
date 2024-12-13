@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Providers\Managers\ExchangeServiceManager;
 use App\Services\Exchange\ExchangeService;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class ExchangeServiceProvider extends ServiceProvider
 {

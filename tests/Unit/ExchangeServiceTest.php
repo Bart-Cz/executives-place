@@ -1,9 +1,9 @@
 <?php
 
 use App\Enums\CurrencyEnum;
+use Illuminate\Support\Facades\Http;
 use App\Services\Exchange\ApiExchange\ApiExchangeService;
 use App\Services\Exchange\LocalExchange\LocalExchangeService;
-use Illuminate\Support\Facades\Http;
 
 beforeEach(function () {
     Http::fake();

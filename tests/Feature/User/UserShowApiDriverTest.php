@@ -1,9 +1,9 @@
 <?php
 
-use App\Enums\CurrencyEnum;
 use App\Models\User;
-use Illuminate\Support\Facades\Config;
+use App\Enums\CurrencyEnum;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Config;
 
 beforeEach(function () {
     Config::set('exchange.driver', 'api');

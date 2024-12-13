@@ -2,9 +2,9 @@
 
 namespace App\Providers\Managers;
 
+use App\Services\Exchange\LocalExchange\LocalExchangeService;
 use App\Services\Exchange\ApiExchange\ApiExchangeService;
 use App\Services\Exchange\ExchangeService;
-use App\Services\Exchange\LocalExchange\LocalExchangeService;
 use InvalidArgumentException;
 
 class ExchangeServiceManager
@@ -16,9 +16,9 @@ class ExchangeServiceManager
     {
         $driver = config('exchange.driver');
 
-        $driverMethod = 'create'.ucfirst($driver).'ExchangeService';
+        $driverMethod = 'create' . ucfirst($driver) . 'ExchangeService';
 
-        if (! method_exists($this, $driverMethod)) {
+        if (!method_exists($this, $driverMethod)) {
             throw new InvalidArgumentException("Driver [{$driver}] is not supported.");
         }
 

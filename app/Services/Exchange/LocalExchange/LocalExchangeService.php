@@ -20,7 +20,7 @@ class LocalExchangeService extends ExchangeService
         // consider model, but query builder better for performance
         $rate = DB::table('exchange_rates')->where('base_currency', $baseCurrency)->where('target_currency', $targetCurrency)->value('rate');
 
-        if (! is_null($rate)) {
+        if (!is_null($rate)) {
             return $rate;
         }
 

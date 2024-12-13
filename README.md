@@ -72,4 +72,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 127.0.0.1 executives-place.test, otherwise changing .env to APP_URL=http://localhost should work
 3. Unfortunately the functionality of https://exchangeratesapi.io/ is very limited, conversion endpoint does not work with free account.
 Latest rates endpoint used, but it also seems to be working only with EUR as a base currency. Please bear that in mind when testing manually, otherwise it throws exception.
-
+4. Uuid used for model binding to restrict visibility of ids
+5. DatabaseTransactions setting for testing database 
