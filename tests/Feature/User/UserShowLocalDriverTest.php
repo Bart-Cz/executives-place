@@ -16,10 +16,11 @@ test('user can be seen when the base currency provided', function () {
     ]);
 
     $userData = [
+        $user,
         'currency' => CurrencyEnum::GBP->value,
     ];
 
-    $response = $this->postJson(route('user.show', $user), $userData)->json();
+    $response = $this->getJson(route('user.show', $userData))->json();
 
     expect($response['data']['name'])->toBe($user->name)
         ->and($response['data']['currency'])->toBe($user->currency)
@@ -35,12 +36,13 @@ test('user can be seen when different currency provided', function () {
     ]);
 
     $userData = [
+        $user,
         'currency' => $targetCurrency,
     ];
 
     $exchangeRate = (new LocalExchangeService)->getRate($baseCurrency, $targetCurrency);
 
-    $response = $this->postJson(route('user.show', $user), $userData)->json();
+    $response = $this->getJson(route('user.show', $userData))->json();
 
     expect($response['data']['name'])->toBe($user->name)
         ->and($response['data']['currency'])->toBe($targetCurrency)
@@ -60,10 +62,11 @@ test('error when local driver and cannot fetch correct exchange rate from db', f
     ]);
 
     $userData = [
+        $user,
         'currency' => CurrencyEnum::GBP->value,
     ];
 
-    $response = $this->postJson(route('user.show', $user), $userData)->json();
+    $response = $this->getJson(route('user.show', $userData))->json();
 
     expect($response['error'])->toBe('Failed to fetch exchange rates from the local driver.');
 });

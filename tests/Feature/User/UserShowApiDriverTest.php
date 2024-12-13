@@ -16,10 +16,11 @@ test('user can be seen when the base currency provided', function () {
     ]);
 
     $userData = [
+        $user,
         'currency' => CurrencyEnum::GBP->value,
     ];
 
-    $response = $this->postJson(route('user.show', $user), $userData)->json();
+    $response = $this->getJson(route('user.show', $userData))->json();
 
     expect($response['data']['name'])->toBe($user->name)
         ->and($response['data']['currency'])->toBe($user->currency)
@@ -35,10 +36,11 @@ test('Http request is sent to exchange rate provider api', function () {
     ]);
 
     $userData = [
+        $user,
         'currency' => $targetCurrency,
     ];
 
-    $this->postJson(route('user.show', $user), $userData)->json();
+    $this->getJson(route('user.show', $userData))->json();
 
     Http::assertSent(function ($request) use ($baseCurrency, $targetCurrency) {
         return $request->url() == config('services.exchangeratesapi.base_url')
@@ -56,10 +58,11 @@ test('error when api driver and cannot fetch correct exchange rate', function ()
     ]);
 
     $userData = [
+        $user,
         'currency' => CurrencyEnum::GBP->value,
     ];
 
-    $response = $this->postJson(route('user.show', $user), $userData)->json();
+    $response = $this->getJson(route('user.show', $userData))->json();
 
     expect($response['error'])->toBe('Failed to fetch exchange rates from the API.');
 });

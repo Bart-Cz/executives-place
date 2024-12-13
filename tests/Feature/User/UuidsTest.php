@@ -9,15 +9,11 @@ test('user cannot be shown by id -> uuid binding for less visibility of our ids'
         'currency' => CurrencyEnum::GBP->value,
     ]);
 
-    $userData = [
-        'currency' => CurrencyEnum::GBP->value,
-    ];
-
     // id provided
-    $this->postJson('/api/user/'.$user->id, $userData)->assertNotFound()->json();
+    $this->getJson('/api/user/'.$user->id.'?currency=gbp')->assertNotFound()->json();
 
     // uuid provided
-    $response2 = $this->postJson('/api/user/'.$user->uuid, $userData)->assertSuccessful()->json();
+    $response2 = $this->getJson('/api/user/'.$user->uuid.'?currency=gbp')->assertSuccessful()->json();
 
     expect($response2['data']['name'])->toBe($user->name)
         ->and($response2['data']['uuid'])->toBe($user->uuid)

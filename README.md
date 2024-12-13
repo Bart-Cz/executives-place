@@ -70,7 +70,31 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 1. Built with the newest laravel installation: Laravel 11 and PHP 8.4
 2. If on Linux/Mac it might need updating /etc/hosts with:
 127.0.0.1 executives-place.test, otherwise changing .env to APP_URL=http://localhost should work
-3. Unfortunately the functionality of https://exchangeratesapi.io/ is very limited, conversion endpoint does not work with free account.
-Latest rates endpoint used, but it also seems to be working only with EUR as a base currency. Please bear that in mind when testing manually, otherwise it throws exception.
-4. Uuid used for model binding to restrict visibility of ids
+3. Unfortunately the functionality of https://exchangeratesapi.io/ is very limited without paid subscription, conversion endpoint does not work with free account.
+Latest rates endpoint is used, but it also seems to be working only with EUR as a base currency. Please bear that in mind when testing manually, otherwise it throws exception.
+4. Uuids used for model binding to restrict visibility of ids
 5. DatabaseTransactions setting for testing database 
+6. Pest is used for testing
+7. Sail is used for containerisation
+8. Steps to set the project up:
+
+A. Clone the repo
+```
+https://github.com/Bart-Cz/executives-place.git
+```
+B. CD in to the root directory of the project and run the following command
+```
+   docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php84-composer:latest \
+    composer install --ignore-platform-reqs
+
+https://laravel.com/docs/11.x/sail#installing-composer-dependencies-for-existing-projects
+```
+C. Add a .env file in the root directory
+
+D. sail up -d OR ./vendor/bin/sail up -d (without sail alias setup)
+
+E. When complete, run sail artisan migrate --seed
